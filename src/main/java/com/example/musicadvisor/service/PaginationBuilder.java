@@ -1,6 +1,6 @@
 package com.example.musicadvisor.service;
 
-import com.example.musicadvisor.model.albums.Albums;
+import com.example.musicadvisor.api.model.albums.Albums;
 import com.example.musicadvisor.model.pagination.Pagination;
 import org.springframework.stereotype.Component;
 

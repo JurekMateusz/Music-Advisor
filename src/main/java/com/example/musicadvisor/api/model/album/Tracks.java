@@ -1,4 +1,4 @@
-package com.example.musicadvisor.model.album;
+package com.example.musicadvisor.api.model.album;
 
 import lombok.Getter;
 

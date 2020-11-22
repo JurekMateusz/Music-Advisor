@@ -1,6 +1,5 @@
-package com.example.musicadvisor.model;
+package com.example.musicadvisor.api.model;
 
-import com.example.musicadvisor.model.ExternalUrls;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 

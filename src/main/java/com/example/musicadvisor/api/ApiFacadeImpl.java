@@ -1,7 +1,7 @@
-package com.example.musicadvisor.http;
+package com.example.musicadvisor.api;
 
-import com.example.musicadvisor.model.album.Album;
-import com.example.musicadvisor.model.albums.Albums;
+import com.example.musicadvisor.api.model.album.Album;
+import com.example.musicadvisor.api.model.albums.Albums;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -24,8 +24,8 @@ public class ApiFacadeImpl implements ApiFacade {
     }
 
     @Override
-    public Optional<Album> getAlbum(int page, String id) {
-        String url = urlBuilder.album(id, page - 1);
+    public Optional<Album> getAlbum( String id) {
+        String url = urlBuilder.album(id);
         Optional<Album> album = request.getAlbum(url);
         return album;
     }
