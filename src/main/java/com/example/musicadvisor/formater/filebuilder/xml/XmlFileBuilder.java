@@ -1,14 +1,13 @@
-package com.example.musicadvisor.formater.xml;
+package com.example.musicadvisor.formater.filebuilder.xml;
 
 import com.example.musicadvisor.api.model.album.Album;
-import com.example.musicadvisor.formater.FileBuilder;
-import com.example.musicadvisor.model.file.FileData;
+import com.example.musicadvisor.formater.filebuilder.FileBuilderTemple;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.core.io.ByteArrayResource;
 
-public class XmlFileBuilder implements FileBuilder {
+public class XmlFileBuilder extends FileBuilderTemple {
     private XmlMapper xmlMapper;
 
     public XmlFileBuilder() {
@@ -17,7 +16,12 @@ public class XmlFileBuilder implements FileBuilder {
     }
 
     @Override
-    public FileData build(Album album) {
+    protected String getFileExtension() {
+        return "xml";
+    }
+
+    @Override
+    protected ByteArrayResource getByteArrayResourceInSpecificFormat(Album album) {
         String xml = "";
         try {
             xml = xmlMapper.writeValueAsString(album);
@@ -25,7 +29,6 @@ public class XmlFileBuilder implements FileBuilder {
             e.printStackTrace();
         }
         byte[] bytes = xml.getBytes();
-        ByteArrayResource resource = new ByteArrayResource(bytes);
-        return FileData.of("xml", resource);
+        return new ByteArrayResource(bytes);
     }
 }

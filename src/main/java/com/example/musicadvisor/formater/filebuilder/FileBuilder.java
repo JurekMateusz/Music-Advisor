@@ -1,4 +1,4 @@
-package com.example.musicadvisor.formater;
+package com.example.musicadvisor.formater.filebuilder;
 
 import com.example.musicadvisor.api.model.album.Album;
 import com.example.musicadvisor.model.file.FileData;
