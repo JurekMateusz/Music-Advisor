@@ -1,13 +1,12 @@
-package com.example.musicadvisor.formater.json;
+package com.example.musicadvisor.formater.filebuilder.json;
 
 import com.example.musicadvisor.api.model.album.Album;
-import com.example.musicadvisor.formater.FileBuilder;
-import com.example.musicadvisor.model.file.FileData;
+import com.example.musicadvisor.formater.filebuilder.FileBuilderTemple;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.core.io.ByteArrayResource;
 
-public class JsonFileBuilder implements FileBuilder {
+public class JsonFileBuilder extends FileBuilderTemple {
     private Gson parser;
 
     public JsonFileBuilder() {
@@ -15,10 +14,14 @@ public class JsonFileBuilder implements FileBuilder {
     }
 
     @Override
-    public FileData build(Album album) {
+    protected String getFileExtension() {
+        return "json";
+    }
+
+    @Override
+    protected ByteArrayResource getByteArrayResourceInSpecificFormat(Album album) {
         String json = parser.toJson(album);
         byte[] jsonInBytes = json.getBytes();
-        ByteArrayResource byteArrayResource = new ByteArrayResource(jsonInBytes);
-        return FileData.of("json", byteArrayResource);
+        return new ByteArrayResource(jsonInBytes);
     }
 }
