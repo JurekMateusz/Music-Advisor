@@ -1,9 +1,8 @@
 package com.example.musicadvisor.formater;
 
 import com.example.musicadvisor.formater.filebuilder.FileBuilder;
-import com.example.musicadvisor.formater.filebuilder.FileBuilderTemple;
-import com.example.musicadvisor.formater.filebuilder.json.JsonFileBuilder;
-import com.example.musicadvisor.formater.filebuilder.xml.XmlFileBuilder;
+import com.example.musicadvisor.formater.filebuilder.format.json.JsonFileBuilder;
+import com.example.musicadvisor.formater.filebuilder.format.xml.XmlFileBuilder;
 import com.google.common.collect.ImmutableMap;
 
 import java.util.Optional;
