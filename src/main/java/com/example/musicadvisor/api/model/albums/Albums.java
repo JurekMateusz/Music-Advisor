@@ -1,4 +1,4 @@
-package com.example.musicadvisor.model.albums;
+package com.example.musicadvisor.api.model.albums;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

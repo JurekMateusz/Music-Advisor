@@ -1,8 +1,8 @@
-package com.example.musicadvisor.http;
+package com.example.musicadvisor.api;
 
-import com.example.musicadvisor.model.album.Album;
-import com.example.musicadvisor.model.albums.Albums;
-import com.example.musicadvisor.model.albums.AlbumsRoot;
+import com.example.musicadvisor.api.model.album.Album;
+import com.example.musicadvisor.api.model.albums.Albums;
+import com.example.musicadvisor.api.model.albums.AlbumsRoot;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
 

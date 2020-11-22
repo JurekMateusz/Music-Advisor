@@ -7,14 +7,21 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<div th:insert="fragments/navbar"></div>
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading" th:text="${album.name}"></h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-            etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-        <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        <br><br>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download Album
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item"th:href="@{/album/download(id=${album.id},type=JSON)}">JSON format</a>
+                <a class="dropdown-item"th:href="@{/album/download(id=${album.id},type=XML)}">XML format</a>
+            </div>
+        </div>
         </p>
     </div>
 </section>

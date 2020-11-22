@@ -1,4 +1,4 @@
-package com.example.musicadvisor.model;
+package com.example.musicadvisor.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -1,8 +1,8 @@
 package com.example.musicadvisor.service;
 
-import com.example.musicadvisor.http.ApiFacade;
-import com.example.musicadvisor.model.Image;
-import com.example.musicadvisor.model.albums.Albums;
+import com.example.musicadvisor.api.ApiFacade;
+import com.example.musicadvisor.api.model.Image;
+import com.example.musicadvisor.api.model.albums.Albums;
 import com.example.musicadvisor.model.pagination.Pagination;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
