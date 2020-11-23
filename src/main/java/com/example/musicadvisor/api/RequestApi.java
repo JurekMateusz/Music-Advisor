@@ -32,4 +32,11 @@ public class RequestApi {
                 .bodyToMono(Album.class)
                 .blockOptional();
     }
+    public Optional<?> getCollection(Class<?> clazz,String url) {
+        return client.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(clazz)
+                .blockOptional();
+    }
 }
