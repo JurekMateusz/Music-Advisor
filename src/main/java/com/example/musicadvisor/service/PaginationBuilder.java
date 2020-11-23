@@ -13,12 +13,12 @@ public class PaginationBuilder {
         int total = albums.getTotal();
         int currentPage = countCurrentPage(offset, limit);
         int totalPages = countTotalPages(total, limit);
-
-        Pagination pagination = new Pagination();
-        pagination.setTotalPages(totalPages);
-        pagination.setPageSize(limit);
-        pagination.setCurrentPage(currentPage);
-        return pagination;
+        
+        return Pagination.builder()
+                .totalPages(totalPages)
+                .pageSize(limit)
+                .currentPage(currentPage)
+                .build();
     }
 
     private int countCurrentPage(int offset, int limit) {
@@ -30,6 +30,4 @@ public class PaginationBuilder {
         if (totalPages % limit != 0) pages += 1;
         return pages;
     }
-
-
 }

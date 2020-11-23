@@ -6,9 +6,8 @@ import com.example.musicadvisor.api.model.album.Album;
 import com.example.musicadvisor.exceptions.BadAlbumIdParamInUriException;
 import com.example.musicadvisor.exceptions.NotGivenParamInUriException;
 import com.example.musicadvisor.exceptions.NotSupportedFileFormatException;
-import com.example.musicadvisor.formater.filebuilder.FileBuilder;
-import com.example.musicadvisor.formater.filebuilder.FileBuilderTemple;
 import com.example.musicadvisor.formater.FileBuilderFactory;
+import com.example.musicadvisor.formater.filebuilder.FileBuilder;
 import com.example.musicadvisor.model.file.FileData;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -24,10 +23,8 @@ public class AlbumService {
     }
 
     public boolean fetchDataToModelForPlaylist(Model model, Optional<String> album) {
-        if (album.isEmpty()) {
-            throw new NotGivenParamInUriException("No param");
-        }
-        Optional<Album> albumOpt = api.getAlbum(album.get());
+        String albumId = album.orElseThrow(() -> new NotGivenParamInUriException("No param"));
+        Optional<Album> albumOpt = api.getAlbum(albumId);
         if (albumOpt.isEmpty()) {
             return false;
         }
@@ -37,8 +34,8 @@ public class AlbumService {
 
 
     public FileData getDataToDownLoad(Optional<String> albumIdOpt, Optional<String> typeOpt) {
-        String albumId = albumIdOpt.orElseThrow(()-> new NotGivenParamInUriException("Not given album id"));
-        String type = typeOpt.orElseThrow(()-> new NotGivenParamInUriException("Not given type"));
+        String albumId = albumIdOpt.orElseThrow(() -> new NotGivenParamInUriException("Not given album id"));
+        String type = typeOpt.orElseThrow(() -> new NotGivenParamInUriException("Not given type"));
         Optional<Album> albumFromApi = api.getAlbum(albumId);
         Album album = albumFromApi.orElseThrow(BadAlbumIdParamInUriException::new);
         Optional<FileBuilder> fileBuilder = FileBuilderFactory.get(type);

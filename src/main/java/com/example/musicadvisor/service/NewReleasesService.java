@@ -19,6 +19,14 @@ public class NewReleasesService {
 
     public void fetchDataToModel(Model model, int page) {
         Albums newReleases = api.getNewReleases(page);
+        removeUnnecessaryImages(newReleases);
+        addQuotesInAlbumTitles(newReleases);
+        Pagination pagination = createPagination.createPagination(newReleases);
+        model.addAttribute("albums", newReleases.getAlbums());
+        model.addAttribute("pagination", pagination);
+    }
+
+    private void removeUnnecessaryImages(Albums newReleases) {
         newReleases.getAlbums().forEach(item -> {
             List<Image> oneImage = item.getImages()
                     .stream()
@@ -26,12 +34,12 @@ public class NewReleasesService {
                     .collect(Collectors.toList());
             item.setImages(oneImage);
         });
+    }
+
+    private void addQuotesInAlbumTitles(Albums newReleases) {
         newReleases.getAlbums().forEach(item -> {
-            String name = "\""+item.getName()+"\"";
+            String name = "\"" + item.getName() + "\"";
             item.setName(name);
         });
-        Pagination pagination = createPagination.createPagination(newReleases);
-        model.addAttribute("albums", newReleases.getAlbums());
-        model.addAttribute("pagination", pagination);
     }
 }

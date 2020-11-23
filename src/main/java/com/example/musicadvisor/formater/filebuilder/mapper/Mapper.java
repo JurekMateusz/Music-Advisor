@@ -22,22 +22,6 @@ public class Mapper {
             mapper.map(item -> item.getExternalUrls().getSpotifyUrl(), Track::setLinkToTrack);
             mapper.map(Item::getDurationMs, Track::setDuration);
         });
-//        Converter<Item, Track> trackConverter = new Converter<Item, Track>() {
-//            public Track convert(MappingContext<Item, Track> context) {
-//                Item item = context.getSource();
-//                Track track = context.getDestination();
-//                String spotifyUrl = item.getExternalUrls().getSpotifyUrl();
-//                track.setLinkToTrack(spotifyUrl);
-//
-//                Integer durationMs = item.getDurationMs();
-//                long minutes = TimeUnit.MILLISECONDS.toMinutes(durationMs);
-//                long seconds = TimeUnit.MILLISECONDS.toSeconds(durationMs);
-//                seconds = minutes * 60 - seconds;
-//                track.setDuration(minutes + "." + seconds);
-//                return  track;
-//            }
-//        };
-//        mapper.addConverter(trackConverter);
     }
 
     public AlbumDownload map(Album album) {
