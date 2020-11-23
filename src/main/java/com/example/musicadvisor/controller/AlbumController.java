@@ -2,7 +2,7 @@ package com.example.musicadvisor.controller;
 
 import com.example.musicadvisor.model.file.FileData;
 import com.example.musicadvisor.service.AlbumService;
-import org.springframework.core.io.ByteArrayResource;
+import lombok.AllArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.util.Optional;
 
 @Controller
+@AllArgsConstructor
 public class AlbumController {
     private AlbumService service;
-
-    public AlbumController(AlbumService service) {
-        this.service = service;
-    }
 
     @GetMapping("/album")
     public String getPlaylist(Model model, @RequestParam("id") Optional<String> album) {
@@ -33,13 +29,11 @@ public class AlbumController {
 
     @GetMapping("/album/download")
     public ResponseEntity<Resource> downloadAlbum(@RequestParam("id") Optional<String> album,
-                                                  @RequestParam("type") Optional<String> type){
+                                                  @RequestParam("type") Optional<String> type) {
         FileData file = service.getDataToDownLoad(album, type);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""
-                        + "DATA."+file.getFileExtension() + "\"")
+                        + "DATA." + file.getFileExtension() + "\"")
                 .body(file.getResource());
     }
-
-
 }

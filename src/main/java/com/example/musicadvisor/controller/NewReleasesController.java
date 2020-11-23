@@ -14,11 +14,10 @@ import java.util.Optional;
 public class NewReleasesController {
     private NewReleasesService service;
 
-
     @GetMapping("/new-releases")
     public String getNewReleases(Model model, @RequestParam("page") Optional<Integer> page) {
         int currentPage = page.orElse(0);
-        service.fetchDataToModel(model,currentPage);
+        service.fetchDataToModel(model, currentPage);
         return "new-releases";
     }
 }
