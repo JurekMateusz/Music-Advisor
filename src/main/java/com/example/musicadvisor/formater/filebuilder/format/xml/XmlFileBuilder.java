@@ -1,13 +1,13 @@
 package com.example.musicadvisor.formater.filebuilder.format.xml;
 
-import com.example.musicadvisor.formater.filebuilder.FileBuilderTemple;
+import com.example.musicadvisor.formater.filebuilder.FileBuilderTemplate;
 import com.example.musicadvisor.formater.filebuilder.model.MusicAdvisor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.core.io.ByteArrayResource;
 
-public class XmlFileBuilder extends FileBuilderTemple {
+public class XmlFileBuilder extends FileBuilderTemplate {
     private XmlMapper xmlMapper;
 
     public XmlFileBuilder() {

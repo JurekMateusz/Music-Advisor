@@ -8,7 +8,7 @@ import com.example.musicadvisor.model.file.FileData;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.lang.NonNull;
 
-public abstract class FileBuilderTemple implements FileBuilder {
+public abstract class FileBuilderTemplate implements FileBuilder {
     private Mapper mapper = new Mapper();
 
     @Override
