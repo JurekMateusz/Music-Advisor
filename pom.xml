@@ -129,7 +129,7 @@
                 <configuration>
                     <arguments>
                         <argument>
-                            --spring.config.location=/src/main/resources/application.properties,C:\Users\mjure\java_properties\spotify\application.yml
+                            --spring.config.location=/src/main/resources/application.properties,..\application.yml
                         </argument>
                     </arguments>
                 </configuration>
